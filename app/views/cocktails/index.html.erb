@@ -1,0 +1,41 @@
+<div id="preload">
+  <%=image_path "alcohol-bar-beer-1283219.jpg"%>
+</div>
+<div id="pagepiling">
+  <div class="section" id="pagepiling">
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=image_path "alcohol-bar-beer-1283219.jpg"%>);">
+      <div class="container">
+        <h1>Doses & Mimosas</h1>
+        <h2>Cocktails for every occasion</h2>
+        <form class="form-inline my-2 my-lg-0" action="/#cocktail-list">
+          <input class="form-control mr-sm-2" name="query" type="search" placeholder="What you drinkin?" aria-label="Search" value="<%= @query %>">
+          <button class="btn btn-light" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="section pp-scrollable index-page list-page" data-anchor="cocktail-list">
+    <h2 class="text-light py-4 text-center">🍸Pick Your Poison🍸</h2>
+    <div class="cards">
+      <% @cocktails.each do |cocktail| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.image %>)">
+          <%= link_to cocktail.name, cocktail_path(cocktail) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="section form-page">
+    <div class="form-div container pt-3">
+        <h1>New Cocktail</h1>
+        <%= simple_form_for(@cocktail) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :name %>
+            <%= f.input :image %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, class: "btn btn-light" %> <%= link_to 'Back', cocktails_path, class: "btn btn-dark" %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
