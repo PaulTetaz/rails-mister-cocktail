@@ -27,7 +27,7 @@
   <div class="section form-page">
     <div class="form-div container pt-3">
         <h1>New Cocktail</h1>
-        <%= simple_form_for(@cocktail) do |f| %>
+        <%= simple_form_for [@cocktail] do |f| %>
           <div class="form-inputs">
             <%= f.input :name %>
             <%= f.input :image %>
